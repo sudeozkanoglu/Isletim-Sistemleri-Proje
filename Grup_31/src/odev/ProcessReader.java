@@ -13,8 +13,7 @@ public class ProcessReader implements IProcessReader {
 
 		readFile(path);
 	}
-	
-	// Metin dosyasını okur ve bütün prosesleri oluşturup bir kuyruğa atar.
+	//prosesleri kuyruga atar
 	private void readFile(String path) {
 	    try {
 	        File file = new File(path);
@@ -48,9 +47,8 @@ public class ProcessReader implements IProcessReader {
 	    }
 	}
 
+//varis zamaninda gelen prosesleri döndürür
 
-	// Verilen varış zamanında gelen prosesleri döndürür. Ayrıca prosesleri içindeki
-	// kuyruktan çıkarır.
 	@Override
 	
 	public IProcessQueue getProcesses(int destinationTime) {
@@ -59,8 +57,6 @@ public class ProcessReader implements IProcessReader {
 		ISpecialProcess tmpProcess;
 		while (!tmpQueue.isEmpty()) {
 			tmpProcess = tmpQueue.dequeue();
-			ProcessReader.this.memory.releaseResources(tmpProcess.getMemory(), tmpProcess.getPrinters(), tmpProcess.getScanners(), tmpProcess.getModems(), tmpProcess.getCds());
-			this.processes.delete(tmpProcess);
 			foundedProcesses.enqueue(tmpProcess);
 		}
 		return foundedProcesses;

@@ -46,8 +46,7 @@ public class ProcessQueue implements IProcessQueue {
 		return this.front.data;
 	}
 
-	// Kuyruktaki tüm proseslerin bekleme zamanını 1 artırır. Bekleme süresi 20
-	// saniyeyi aşan prosesleri döndürür.
+//kuyruktaki processlerin bekleme zamanini artirir ve bekleme süresi 20 saniyeyi gecen prosesleri geri döndürür
 	@Override
 	public IProcessQueue increaseWaitingTime() {
 		IProcessQueue timeOutProcesses = new ProcessQueue();
